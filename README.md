@@ -1,5 +1,6 @@
-# Heading level 1 C - printf
-# Heading level 3 made by Tuyen, Nolan, Gwenael
+<div align="center"> 
+  <h1><strong>Project C - printf</strong></h1>
+</div>
 
 # _printf :page_facing_up:
 
@@ -7,8 +8,8 @@ The project is a creation of Holbertonschool and the program is a pseudo-recreat
 
 ## Flowchart
 
-<img src="https://cdn.discordapp.com/attachments/1164887132893106208/1176453456542834689/printf_final.png?ex=656eeca9&is=655c77a9&hm=f9319bff4ed30bb50446e588ba644189efc334a349ca7b43bdea860209b8d01c&"
-         alt="Flowchart">
+<img src="https://cdn.discordapp.com/attachments/1164887132893106208/1176453456542834689/printf_final.png?ex=656eeca9&is=655c77a9&hm=f9319bff4ed30bb50446e588ba644189efc334a349ca7b43bdea860209b8d01c&">
+         <alt="Flowchart">
 
 ## Authorized functions and macros
 
