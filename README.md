@@ -2,7 +2,7 @@
   <h1>Project C - printf</h1>
 </div>
 
-# _printf :page_facing_up:
+# _printf
 
 The project is a creation of Holbertonschool and the program is a pseudo-recreation of the C standard library function, `printf`.
 
