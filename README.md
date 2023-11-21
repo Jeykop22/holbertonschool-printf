@@ -46,6 +46,8 @@ The following conversion specifiers need to be handled:
 | %c      | int    | Convert an int to an unsigned character and print the resulting character  |
 | %s      | char * | Print a string pointed to by a char *  |
 | %%      | char   | Print a single % character  |
+| %d      | int    | Print integer in decimal|
+| %i      | int    | Print integer in decimal and other base like octal or hexa|
 
   The c, s, and % conversion specifiers are standard and are included in the C library printf function. The remaining conversion specifiers need to be implemented.
 
