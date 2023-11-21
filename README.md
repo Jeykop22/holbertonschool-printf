@@ -1,5 +1,5 @@
 <div align="center"> 
-  <h1><strong>Project C - printf</strong></h1>
+  <h1><strong><BODY LINK="#00FF00">Project C - printf</BODY LINK></strong></h1>
 </div>
 
 # _printf :page_facing_up:
