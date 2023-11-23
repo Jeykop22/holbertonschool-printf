@@ -2,6 +2,7 @@
 #define MAIN_H
 #include <stdarg.h>
 #include <string.h>
+#include <unistd.h>
 
 int _putchar(char c);
 void _print_char(va_list list_args);
@@ -19,5 +20,7 @@ typedef struct format_type
 	char *symbol;
 	void (*print)(va_list list_args);
 } format_t;
+
+format_t *get_print_func(void);
 
 #endif

@@ -1,11 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
-
-void _print_char(va_list list_args);
-void _print_str(va_list list_args);
-void _print_int(va_list list_args);
-
 /**
  * _printf - to print the number of characters printed
  * @format: format string
@@ -13,14 +6,9 @@ void _print_int(va_list list_args);
 */
 int _printf(const char *format, ...)
 {
-	int index_function = 0;
+	int index_function = 0, char_print = 0;
 	va_list list_args;
-	format_t func[] = {
-		{"c", _print_char},
-		{"s", _print_str},
-		{"d", _print_int},
-		{"i", _print_int}
-	};
+	format_t *func = get_print_func();
 
 	if (!format)
 		return (-1);
@@ -30,6 +18,7 @@ int _printf(const char *format, ...)
 		if (*format != '%')
 		{
 			write(1, format, 1);
+			char_print++;
 		}
 		else
 		{
@@ -41,6 +30,7 @@ int _printf(const char *format, ...)
 			if (*format == '%')
 			{
 				write(1, format, 1);
+				char_print++;
 			}
 			else
 			{
@@ -49,13 +39,11 @@ int _printf(const char *format, ...)
 					if (*format == *(func[index_function].symbol))
 					{
 						func[index_function].print(list_args);
-					}
-					index_function++;
+						char_print++;
+					} index_function++;
 				}
 			}
-		}
-		format++;
-	}
-	va_end(list_args);
-	return (0);
+		} format++;
+	} va_end(list_args);
+	return (char_print);
 }
