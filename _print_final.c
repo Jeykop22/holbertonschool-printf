@@ -5,8 +5,7 @@
  * Return: print with format
 */
 int _printf(const char *format, ...)
-{
-	int index_function = 0, char_print = 0;
+{	int index_function = 0, char_print = 0;
 	va_list list_args;
 	format_t *func = get_print_func();
 
@@ -16,33 +15,31 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
-		{
-			write(1, format, 1);
-			char_print++;
-		}
+		{	write(1, format, 1);
+			char_print++;	}
 		else
 		{
-			format++;
-			if (index_function == 4)
-				index_function = 0;
-			if (*format == '\0')
-				break;
-			if (*format == '%')
-			{
-				write(1, format, 1);
-				char_print++;
-			}
+		if (*(format + 1) == '\0')
+			break;
+		if (*(format + 1) != '\0')
+		{
+			if (*(format + 1) != 'c' && *(format + 1) != 's'
+			&& *(format + 1) != 'd' && *(format + 1) != 'i' && *(format + 1) != '%')
+			{	_putchar('%');
+				char_print++;	}
 			else
-			{
-				while (index_function < 4)
+			{	format++;
+				if (*format == '%')
+				{	_putchar('%');
+					char_print++;	}
+				for (index_function = 0; index_function < 4; index_function++)
 				{
-					if (*format == *(func[index_function].symbol))
-					{
-						func[index_function].print(list_args);
-						char_print++;
-					} index_function++;
+				if (*format == *(func[index_function].symbol))
+				{	func[index_function].print(list_args);
+					char_print++;	}
 				}
 			}
+		}
 		} format++;
 	} va_end(list_args);
 	return (char_print);

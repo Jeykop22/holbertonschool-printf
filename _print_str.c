@@ -13,6 +13,8 @@ void _print_str(va_list list_args)
 	char *str = va_arg(list_args, char *);
 	int index = 0;
 
+	if (str == NULL)
+		str = "(null)";
 	while (str[index] != '\0')
 		index++;
 	write(1, str, index);
