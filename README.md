@@ -40,7 +40,7 @@ The format argument is a character string. The format string is composed of zero
 ## Man Page For _printf
 
 Run this command to get the man :
-`man ./man_printf`
+`man ./man_3_printf`
 
 ## Conversion Specifiers to Handle
 
