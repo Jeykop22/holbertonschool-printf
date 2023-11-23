@@ -6,6 +6,12 @@
 
 The project is a creation of Holbertonschool and the program is a pseudo-recreation of the C standard library function, `printf`.
 
+## Compilation
+
+Run this command for check if your code is right:
+
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c`
+
 ## Flowchart
 
 <img src="https://cdn.discordapp.com/attachments/1164887132893106208/1176526563710357544/printf.png?ex=656f30bf&is=655cbbbf&hm=5ef72784e3d1dc190926848fde96fb97ffa31e228efee03a0fcee6e44a504806&">
@@ -59,11 +65,3 @@ The following conversion specifiers need to be handled:
 ### Format of the Argument String
 
 The `format` string argument is a constant character string composed of zero or more directives.
-
-Authors:
-
-:computer: Tuyen H
-
-:computer: Nolan B
-
-:computer: Gwenael B
