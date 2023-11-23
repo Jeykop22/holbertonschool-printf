@@ -1,11 +1,16 @@
 #include "main.h"
+#include <stdio.h>
+
+int _print_special_format(const char *format, int cp);
+int _print_func(const char *format, format_t *func, va_list list_args, int cp);
+
 /**
  * _printf - to print the number of characters printed
  * @format: format string
  * Return: print with format
 */
 int _printf(const char *format, ...)
-{	int index_function = 0, char_print = 0;
+{	int cp = 0;
 	va_list list_args;
 	format_t *func = get_print_func();
 
@@ -15,32 +20,71 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
-		{	write(1, format, 1);
-			char_print++;	}
+		{
+			write(1, format, 1);
+			cp++;
+		}
 		else
 		{
-		if (*(format + 1) == '\0')
-			break;
-		if (*(format + 1) != '\0')
-		{
-			if (*(format + 1) != 'c' && *(format + 1) != 's'
-			&& *(format + 1) != 'd' && *(format + 1) != 'i' && *(format + 1) != '%')
-			{	_putchar('%');
-				char_print++;	}
+			if (*(format + 1) == '\0' || !*(format + 1))
+			{
+				break;
+			}
 			else
 			{	format++;
-				if (*format == '%')
-				{	_putchar('%');
-					char_print++;	}
-				for (index_function = 0; index_function < 4; index_function++)
+				if (*format == '%' || *format == '!' || *format == 'K')
+					cp = _print_special_format(format, cp);
+				else if (*format != 'c' && *format != 's'
+						&& *format != 'd' && *format != 'i')
 				{
-				if (*format == *(func[index_function].symbol))
-				{	func[index_function].print(list_args);
-					char_print++;	}
+					break;
 				}
+				else
+					cp = _print_func(format, func, list_args, cp);
 			}
 		}
-		} format++;
-	} va_end(list_args);
-	return (char_print);
+		format++;
+	}
+	va_end(list_args);
+	return (cp);
+}
+/**
+ * _print_special_format - print special format like %, !, K
+ * @format: format string
+ * @cp: number of character printed
+ * Return: number of character printed
+*/
+int _print_special_format(const char *format, int cp)
+{
+	_putchar('%');
+	cp++;
+	if (*format == '!')
+		_putchar('!');
+	if (*format == 'K')
+		_putchar('K');
+	cp++;
+	return (cp);
+}
+
+/**
+ * _print_func - print special function
+ * @format: format string
+ * @func: list of function
+ * @list_args: list of argument
+ * @cp: number of character printed
+ * Return: number of character printed
+*/
+int _print_func(const char *format, format_t *func, va_list list_args, int cp)
+{
+	int index_function;
+
+	for (index_function = 0; index_function < 4; index_function++)
+	{
+		if (*format == *(func[index_function].symbol))
+		{
+			func[index_function].print(list_args);
+			cp++;
+		}
+	}
+	return (cp);
 }
