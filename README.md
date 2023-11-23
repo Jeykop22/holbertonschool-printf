@@ -37,6 +37,11 @@ The function returns the number of characters printed (excluding the null byte u
 
 The format argument is a character string. The format string is composed of zero or more directives. See man 3 printf for more detail.
 
+## Man Page For _printf
+
+Run this command to get the man :
+`man ./man_printf`
+
 ## Conversion Specifiers to Handle
 
 The following conversion specifiers need to be handled:
