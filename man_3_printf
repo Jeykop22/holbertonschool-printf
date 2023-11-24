@@ -1,0 +1,73 @@
+.\" Manpage for _printf.
+.TH _PRINTF 3 "24 November 2023" "Version 1.0" "Linux Programmer's Manual"
+
+.SH NAME
+_printf - Print formatted output
+
+.SH SYNOPSIS
+#include "main.h"
+
+int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The _printf function is a custom implementation of the printf function in the C programming language. It prints formatted output to the standard output.
+
+The format string provided in the 'format' argument can contain normal text characters and format specifiers that start with the '%' character.
+
+.SH PARAMETERS
+A pointer to a const char that contains the format string. The format string may contain text and format specifiers that indicate what type of data should be printed and how it should be formatted.
+
+.SH FORMAT SPECIFIERS
+The conversion specifiers supported by _printf are:
+
+.TP
+%d or %i :Prints a signed integer in decimal format.
+
+.TP
+%s :Prints a null-terminated string.
+
+.TP
+%c :Prints a character.
+
+.TP
+%% :Prints a percent character '%'.
+
+.SH RETURN VALUE
+The _printf function returns the total number of characters printed (excluding the null byte used to end output to string), or -1 if an error occurs.
+
+.SH EXAMPLES
+
+.SS DECIMAL
+_printf("Decimal: %d, Integer: %i", 22, 22);
+
+Output:
+Decimal: 22, Integer: 22
+
+.SS CHARACTER
+_printf("Character: %c", 'C');
+
+Output:
+Character: C
+
+.SS STRING
+_printf("%s", "Holbertonschool_printf");
+
+Output:
+Holbertonschool_printf
+
+.SS PERCENT SYMBOL
+_printf("Test: 100%%!");
+
+Output:
+Test: 100%!
+
+.SH NOTES
+This implementation of _printf supports a limited set of format specifiers, including %d for integers and %s for strings. 
+
+.SH AUTHOR
+- Nolan Binet
+- Tuyen Huynh
+- Gwenael Bajulaz
+
+.SH SEE ALSO
+Standard 'printf' function - consult 'man printf' for more information.
