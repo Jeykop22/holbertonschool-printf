@@ -8,7 +8,7 @@
  *
  * Return: string
 */
-void _print_str(va_list list_args)
+int _print_str(va_list list_args)
 {
 	char *str = va_arg(list_args, char *);
 	int index = 0;
@@ -18,4 +18,5 @@ void _print_str(va_list list_args)
 	while (str[index] != '\0')
 		index++;
 	write(1, str, index);
+	return (index);
 }

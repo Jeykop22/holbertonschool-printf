@@ -5,10 +5,12 @@
 #include <unistd.h>
 
 int _putchar(char c);
-void _print_char(va_list list_args);
-void _print_str(va_list list_args);
-void _print_int(va_list list_args);
+int _print_char(va_list list_args);
+int _print_str(va_list list_args);
+int _print_int(va_list list_args);
 int _printf(const char *format, ...);
+int _print_mod(__attribute__((unused))va_list list_args);
+int get_print_func(char character, va_list list_args);
 
 /**
  * struct format_type - structure for format type
@@ -18,9 +20,7 @@ int _printf(const char *format, ...);
 typedef struct format_type
 {
 	char *symbol;
-	void (*print)(va_list list_args);
+	int (*print)(va_list list_args);
 } format_t;
-
-format_t *get_print_func(void);
 
 #endif
