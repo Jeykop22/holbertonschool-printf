@@ -8,15 +8,17 @@
  *
  * Return: integers
 */
-void _print_int(va_list list_args)
+int _print_int(va_list list_args)
 {
 	char last_digit;
 	int reversed;
+	int count_digit = 0;
 	int num = va_arg(list_args, int);
 
 	if (num < 0)
 	{
 		_putchar('-');
+		count_digit++;
 		last_digit = (char)('0' - (num % 10));
 		num /= -10;
 	}
@@ -37,7 +39,9 @@ void _print_int(va_list list_args)
 		char c = (char)((reversed % 10) + '0');
 
 		_putchar(c);
+		count_digit++;
 		reversed /= 10;
 	}
 	_putchar(last_digit);
+	return (count_digit + 1);
 }

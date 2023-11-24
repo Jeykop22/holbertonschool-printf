@@ -8,9 +8,11 @@
  *
  * Return: characters
 */
-void _print_char(va_list list_args)
+int _print_char(va_list list_args)
 {
 	char cha = va_arg(list_args, int);
 
-	write(1, &cha, 1);
+	cha = write(1, &cha, 1);
+
+	return (1);
 }
