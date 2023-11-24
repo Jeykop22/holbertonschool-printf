@@ -32,7 +32,8 @@ int _printf(const char *format, ...)
 			}
 			else
 			{	format++;
-				if (*format == '%' || *format == '!' || *format == 'K')
+				if (*format == '%' || (*format != 'c' && *format != 's'
+					&& *format != 'd' && *format != 'i'))
 					cp = _print_special_format(format, cp);
 				else if (*format != 'c' && *format != 's'
 						&& *format != 'd' && *format != 'i')
@@ -58,10 +59,8 @@ int _print_special_format(const char *format, int cp)
 {
 	_putchar('%');
 	cp++;
-	if (*format == '!')
-		_putchar('!');
-	if (*format == 'K')
-		_putchar('K');
+	if (*format != '%' && *format != 'q' && *format != 'z')
+		_putchar(*format);
 	cp++;
 	return (cp);
 }
