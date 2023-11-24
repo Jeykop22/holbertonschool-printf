@@ -41,7 +41,10 @@ int _printf(const char *format, ...)
 					break;
 				}
 				else
+				{
 					cp = _print_func(format, func, list_args, cp);
+					va_arg(list_args, int);
+				}
 			}
 		}
 		format++;
@@ -59,7 +62,7 @@ int _print_special_format(const char *format, int cp)
 {
 	_putchar('%');
 	cp++;
-	if (*format != '%' && *format != 'q' && *format != 'z')
+	if (*format != '%')
 		_putchar(*format);
 	cp++;
 	return (cp);
