@@ -1,26 +1,25 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <stdarg.h>
-#include <string.h>
-#include <unistd.h>
 
-int _putchar(char c);
-int _print_char(va_list list_args);
-int _print_str(va_list list_args);
-int _print_int(va_list list_args);
-int _printf(const char *format, ...);
-int _print_mod(__attribute__((unused))va_list list_args);
-int get_print_func(char character, va_list list_args);
+#include <stdarg.h>
 
 /**
- * struct format_type - structure for format type
- * @symbol: special symbol to print
- * @print: function pointer
-*/
+ * struct print_functions - Structure for correspondence between
+ *                          char specifier and function to print.
+ * @specifier: Char specifier for conversion
+ * @f: The function print associated
+ */
 typedef struct format_type
 {
-	char *symbol;
-	int (*print)(va_list list_args);
+	char func;
+	int (*print)(va_list);
 } format_t;
 
-#endif
+int _putchar(char c);
+int print_char(va_list args);
+int print_str(va_list args);
+int print_percent(va_list args);
+int _printf(const char *format, ...);
+int print_int(va_list args);
+
+#endif /* MAIN_H */
